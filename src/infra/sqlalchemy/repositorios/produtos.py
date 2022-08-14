@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 
 
 class RepositorioProduto():
-
+    
     def __init__(self, session: Session):
         pass
 
