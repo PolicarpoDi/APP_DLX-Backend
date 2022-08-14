@@ -15,7 +15,6 @@ class Usuario(Base):
 
 class Produto(Base):
     id: Optional[str] = None
-    usuario: Usuario
     nome: str
     detalhes: str
     preco: float
