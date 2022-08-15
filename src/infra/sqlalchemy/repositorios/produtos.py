@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from schemas.schemas import Produto
-from infra.sqlalchemy.models import models
+from src.schemas.schemas import ProdutoSchema
+from src.infra.sqlalchemy.models import models
 
 
 class RepositorioProduto():
@@ -8,7 +8,7 @@ class RepositorioProduto():
     def __init__(self, session: Session):
         self.session = session
 
-    def criar(self, produto: Produto):
+    def criar(self, produto: ProdutoSchema):
         db_produto = models.Produto(nome=produto.nome, 
                                     detalhes=produto.detalhes,
                                     preco=produto.preco,
