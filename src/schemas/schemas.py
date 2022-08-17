@@ -6,14 +6,6 @@ class Base(BaseModel):
     class Config:
         orm_mode = True
 
-class UsuarioSchema(Base):
-    id: Optional[int] = None
-    nome: str
-    telefone: str
-    senha: str
-    #produtos: List[produtos] = None
-    
-    
 class UsuarioSimplesSchema(Base):
     id: Optional[int] = None
     nome: str
@@ -26,10 +18,19 @@ class ProdutoSchema(Base):
     detalhes: str
     preco: float
     disponivel: bool = False
-    usuario_id: int
+    usuario_id: Optional[int]
     usuario: Optional[UsuarioSimplesSchema]
-
     
+    
+class ProdutoSimplesSchema(Base):
+    id: Optional[int] = None
+    nome: str
+    detalhes: str
+    preco: float
+    disponivel: bool = False
+    
+
+
 class PedidoSchema(Base):
     id: Optional[int] = None
     quantidade: int
@@ -38,4 +39,12 @@ class PedidoSchema(Base):
     observacoes: Optional[str] = 'Sem observações'
 
 
+class UsuarioSchema(Base):
+    id: Optional[int] = None
+    nome: str
+    telefone: str
+    senha: str
+    produtos: List[ProdutoSimplesSchema] = []
+    
+    
 
