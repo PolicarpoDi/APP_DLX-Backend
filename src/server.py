@@ -1,4 +1,4 @@
-from src.routers import routers_produtos, routers_usuarios
+from src.routers import routers_produtos, routers_usuarios, routers_pedido
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 
@@ -31,3 +31,6 @@ app.include_router(routers_produtos.router, prefix='/produto')
 
 # Rota Usuários
 app.include_router(routers_usuarios.router, prefix='/usuario')
+
+# Rota Pedidos
+app.include_router(routers_pedido.router, prefix='/pedido')

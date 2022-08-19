@@ -30,13 +30,18 @@ class ProdutoSimplesSchema(Base):
     disponivel: bool = False
     
 
-
 class PedidoSchema(Base):
     id: Optional[int] = None
     quantidade: int
-    entrega: bool = True
-    endereco: str
-    observacoes: Optional[str] = 'Sem observações'
+    local_entrega: Optional[str]
+    tipo_entrega: str
+    observacao: Optional[str] = "Sem observações"
+    
+    usuario_id: Optional[int]
+    produto_id: Optional[int]
+    
+    usuario: Optional[UsuarioSimplesSchema]
+    produto: Optional[ProdutoSimplesSchema]
 
 
 class UsuarioSchema(Base):
@@ -45,6 +50,5 @@ class UsuarioSchema(Base):
     telefone: str
     senha: str
     produtos: List[ProdutoSimplesSchema] = []
-    
     
 

@@ -3,7 +3,7 @@ from src.schemas.schemas import ProdutoSchema, ProdutoSimplesSchema
 from src.infra.sqlalchemy.config.database import get_db
 from fastapi import Depends, status
 from sqlalchemy.orm import Session
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from typing import List
 
 
@@ -18,6 +18,13 @@ def criar_produto(produto: ProdutoSchema, session: Session = Depends(get_db)):
 def listar_produtos(session: Session = Depends(get_db)):
     listar_produto = RepositorioProduto(session).listar()
     return listar_produto
+
+@router.get('/listar/{id}', status_code=status.HTTP_200_OK, response_model=ProdutoSimplesSchema)
+def exibir_produto(id: int, session: Session = Depends(get_db)):
+    produto_localizado = RepositorioProduto(session).exibir_produto_id(id)
+    if not produto_localizado:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail=f'Não há um produto com o ID {id}') 
+    return produto_localizado
 
 @router.put('/atualizar/{id}', status_code=status.HTTP_200_OK, response_model=ProdutoSimplesSchema)
 def atualizar_produto(id: int, produto: ProdutoSchema, session: Session = Depends(get_db)):
