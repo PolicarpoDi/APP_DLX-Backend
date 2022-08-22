@@ -1,3 +1,6 @@
+import token
+from jose import JWTError
+from src.routers.routers_auth import obter_usuario_logao
 from src.infra.providers import token_provider
 from src.infra.sqlalchemy.repositorios.repositorio_usuario import RepositorioUsuario
 from src.schemas.schemas import UsuarioSchema, UsuarioSimplesSchema, LoginDataSchema
@@ -45,7 +48,6 @@ def login(login_data: LoginDataSchema, session: Session = Depends(get_db)):
     token = token_provider.criar_access_token({'sub': usuario.telefone})
     return {'usuario': usuario, 'access_token': token}
 
-@router.get('/me')
-def me(token: str, sesion: Session = Depends(get_db)):
-    # decodificar o token, pegar o telefone, buscar usuario no bd e retornar.
-    pass
+@router.get('/me', response_model=UsuarioSimplesSchema)
+def me(usuario: UsuarioSchema = Depends(obter_usuario_logao)):
+    return usuario
