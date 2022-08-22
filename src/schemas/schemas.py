@@ -51,4 +51,9 @@ class UsuarioSchema(Base):
     senha: str
     produtos: List[ProdutoSimplesSchema] = []
     
+    
+class LoginDataSchema(Base):
+    senha: str
+    telefone: str
+    
 

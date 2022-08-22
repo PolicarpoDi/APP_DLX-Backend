@@ -1,5 +1,3 @@
-from pydantic import SecretStr
-
 from sqlalchemy.orm import Session
 from src.schemas.schemas import UsuarioSchema
 from src.infra.sqlalchemy.models.models import Usuario
@@ -27,4 +25,8 @@ class RepositorioUsuario():
         usuarios = self.session.execute(stmt).scalars().all()
         return usuarios
         
+    
+    def obter_telefone(self, telefone) -> Usuario:
+        query = select(Usuario).where(Usuario.telefone == telefone)
+        return self.session.execute(query).scalars().first()
         

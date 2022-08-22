@@ -1,4 +1,4 @@
-from src.routers import routers_produtos, routers_usuarios, routers_pedido
+from src.routers import routers_produtos, routers_pedido, routers_auth
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 
@@ -26,11 +26,11 @@ app.add_middleware(
 def root():
     return {'Mensagem': 'Bem vindo ao APP DLX'}
 
-# Rota Produtos
+# Rota PRODUTOS
 app.include_router(routers_produtos.router, prefix='/produto')
 
 # Rota SEGURANÇA: AUTENTICAÇÃO E AUTORIZAÇÃO 
-app.include_router(routers_usuarios.router, prefix='/usuario')
+app.include_router(routers_auth.router, prefix='/auth')
 
-# Rota Pedidos
+# Rota PEDIDOS
 app.include_router(routers_pedido.router, prefix='/pedido')
