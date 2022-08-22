@@ -29,7 +29,7 @@ def root():
 # Rota Produtos
 app.include_router(routers_produtos.router, prefix='/produto')
 
-# Rota Usuários
+# Rota SEGURANÇA: AUTENTICAÇÃO E AUTORIZAÇÃO 
 app.include_router(routers_usuarios.router, prefix='/usuario')
 
 # Rota Pedidos
