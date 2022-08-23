@@ -1,6 +1,8 @@
+from src.middlewares.timer import time_request
 from src.routers import routers_produtos, routers_pedido, routers_auth
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from starlette.middleware.base import BaseHTTPMiddleware
 
 
 #criar_bd()
@@ -20,6 +22,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# Passando pelo middleware(time_request)
+app.add_middleware(BaseHTTPMiddleware, dispatch=time_request)
 
 # Rota ROOT
 @app.get('/')
@@ -34,3 +38,5 @@ app.include_router(routers_auth.router, prefix='/auth')
 
 # Rota PEDIDOS
 app.include_router(routers_pedido.router, prefix='/pedido')
+
+

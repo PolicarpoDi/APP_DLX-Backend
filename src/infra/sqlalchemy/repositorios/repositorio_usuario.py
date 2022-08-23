@@ -26,7 +26,7 @@ class RepositorioUsuario():
         return usuarios
         
     
-    def obter_telefone(self, telefone) -> Usuario:
+    def obter_telefone(self, telefone):
         query = select(Usuario).where(Usuario.telefone == telefone)
         return self.session.execute(query).scalars().first()
         

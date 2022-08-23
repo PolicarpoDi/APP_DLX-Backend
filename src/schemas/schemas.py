@@ -5,12 +5,16 @@ from typing import List, Optional
 class Base(BaseModel):
     class Config:
         orm_mode = True
+        
 
 class UsuarioSimplesSchema(Base):
     id: Optional[int] = None
     nome: str
     telefone: str
 
+class LoginSucessoSchema(Base):
+    usuario: UsuarioSimplesSchema
+    access_token: str
 
 class ProdutoSchema(Base):
     id: Optional[int] = None

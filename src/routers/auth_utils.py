@@ -9,7 +9,7 @@ from src.infra.sqlalchemy.repositorios.repositorio_usuario import RepositorioUsu
 
 oauth2_schema = OAuth2PasswordBearer(tokenUrl='token')
 
-def obter_usuario_logao(token: Depends(oauth2_schema), session: Session = Depends(get_db)):
+def obter_usuario_logado(token: str = Depends(oauth2_schema), session: Session = Depends(get_db)):
     # Decodificar o token, pegar o telefone, buscafr usuario no bd e retornar
     exception = HTTPException(status.HTTP_401_UNAUTHORIZED, detail='Token inválido')
     

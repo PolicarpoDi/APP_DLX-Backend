@@ -1,9 +1,8 @@
-import token
 from jose import JWTError
-from src.routers.routers_auth import obter_usuario_logao
+from src.routers.auth_utils import obter_usuario_logado
 from src.infra.providers import token_provider
 from src.infra.sqlalchemy.repositorios.repositorio_usuario import RepositorioUsuario
-from src.schemas.schemas import UsuarioSchema, UsuarioSimplesSchema, LoginDataSchema
+from src.schemas.schemas import LoginSucessoSchema, UsuarioSchema, UsuarioSimplesSchema, LoginDataSchema
 from src.infra.sqlalchemy.config.database import get_db
 from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
@@ -31,7 +30,7 @@ def listar_usuarios(session: Session = Depends(get_db)):
     listar = RepositorioUsuario(session).listar()
     return listar
 
-@router.post('/token', status_code=status.HTTP_202_ACCEPTED)
+@router.post('/token', status_code=status.HTTP_202_ACCEPTED, response_model=LoginSucessoSchema)
 def login(login_data: LoginDataSchema, session: Session = Depends(get_db)):
     senha = login_data.senha
     telefone = login_data.telefone
@@ -46,8 +45,8 @@ def login(login_data: LoginDataSchema, session: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Telefone ou senha estão incorretos!.')
     # Gerar o token JWT
     token = token_provider.criar_access_token({'sub': usuario.telefone})
-    return {'usuario': usuario, 'access_token': token}
+    return LoginSucessoSchema(usuario=usuario, access_token=token)
 
 @router.get('/me', response_model=UsuarioSimplesSchema)
-def me(usuario: UsuarioSchema = Depends(obter_usuario_logao)):
+def me(usuario: UsuarioSchema = Depends(obter_usuario_logado)):
     return usuario
