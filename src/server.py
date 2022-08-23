@@ -1,7 +1,8 @@
+from src.jobs.write_notifications import write_notification
 from src.middlewares.timer import time_request
 from src.routers import routers_produtos, routers_pedido, routers_auth
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, BackgroundTasks
 from starlette.middleware.base import BaseHTTPMiddleware
 
 
@@ -38,5 +39,11 @@ app.include_router(routers_auth.router, prefix='/auth')
 
 # Rota PEDIDOS
 app.include_router(routers_pedido.router, prefix='/pedido')
+
+# Jobs
+@app.post('/send_email/{email}')
+async def send_email(email: str, background: BackgroundTasks):
+    background.add_task(write_notification, email, message='Testando job de email!!')
+    return {'OK': 'Mensagem enviada em background.'}
 
 

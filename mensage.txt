@@ -1,0 +1,3 @@
+Email: policarpodamae@gmail.com.br - msg: Testando job de email!!
+Email: policarpo16@yahoo.com.br - msg: Testando job de email!!
+Email: diego.policarpo@accurate.com.br - msg: Testando job de email!!
