@@ -8,7 +8,9 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 
 Consulte **Implantação** para saber como implantar o projeto.
 
-### Ajustes e melhorias
+---
+
+## Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
@@ -21,33 +23,51 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Criar comandos para facilitar o desenvolvimento e a utilização do serviço local.
 - [ ] Build automatizado do repositório usando alguma ferramenta de Continuous Integration.
 - [ ] Garantir seus padrões e estilo de código de forma automatizada.
-
-### 📋 Pré-requisitos
+#
+## 📋 Pré-requisitos
 
 De que coisas você precisa para instalar o software e como instalá-lo?
 
 ```
-Dar exemplos
+Python v3.7
 ```
-
-### 🔧 Instalação
-
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
-
-Diga como essa etapa será:
-
 ```
-Dar exemplos
+Visual Studio Code (opcional)
 ```
+#
 
-E repita:
+## Conteudo
+API Rest desenvolvida para consumo ...
+- 
+- 
+- 
 
+Todas as rotas solicitam autenticação para ser consumidas, sendo a partir da criação de um usuário, gerando um token e o mesmo sendo validado, para assim ter o acesso aos endpoits.
+#
+## ⚙️ Implantação
+
+Segue abaixo uma série de exemplos passo-a-passo que informam para ter um ambiente de desenvolvimento em execução.
+- Lembrando que esse projeto foi desenvolvido no Linux, portanto, os comandos abaixo são relacioanados ao sistema operacional informado.
+- Os passos abaixo devem ser executados com o terminal aberto na raiz do projeto:
+
+1. Crie uma venv pelo terminal:
 ```
-Até finalizar
+virtualenv venv
 ```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
-
+2. Ative a venv:
+```
+source venv/bin/activate
+```
+3. Instale o requirements.txt:
+```
+pip install -r requirements.txt
+```
+4. No terminal, execute o comando do uvicorn para subir a API:
+```
+uvicorn src.server:app --reload
+```
+![Executando o comando uvicorn](img/uvicorn.png)
+#
 ## ⚙️ Executando os testes
 
 Explicar como executar os testes automatizados para este sistema.
@@ -59,7 +79,7 @@ Explique que eles verificam esses testes e porquê.
 ```
 Dar exemplos
 ```
-
+#
 ### ⌨️ Testes de estilo de codificação
 
 Explique que eles verificam esses testes e porquê.
@@ -67,7 +87,7 @@ Explique que eles verificam esses testes e porquê.
 ```
 Dar exemplos
 ```
-
+#
 ## 📦 Desenvolvimento
 
 Adicione notas adicionais sobre como implantar isso em um sistema ativo
@@ -85,13 +105,7 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🖇️ Colaborando
-
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
-## 📌 Versão
-
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+#
 
 ## ✒️ Autores
 
@@ -101,18 +115,18 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 * **Fulano De Tal** - *Documentação* - [fulanodetal](https://github.com/linkParaPerfil)
 
 Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
-
+#
 ## 📄 Licença
 
 Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](https://github.com/usuario/projeto/licenca) para detalhes.
 
+#
 ## 🎁 Expressões de gratidão
 
 * Conte a outras pessoas sobre este projeto 📢
 * Convide alguém da equipe para uma cerveja 🍺 
 * Obrigado publicamente 🤓.
 * etc.
-
-
 ---
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
