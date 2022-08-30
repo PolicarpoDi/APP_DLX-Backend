@@ -4,6 +4,8 @@
 # Ignore Pycache
 __pycache__
 
-# Ignore venv
-venv
+# Ignore vscode
+.vscode
 
+# Ignore gitignore
+.gitignore
