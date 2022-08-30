@@ -12,11 +12,15 @@ Consulte **Implantação** para saber como implantar o projeto.
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [X] Tarefa 4
-- [X] Tarefa 5
+- [ ] Inserir autenticação em todas as rotas;
+- [ ] README.md explicando todo o funcionamento da API;
+- [ ] Filtros de busca nos endpoints, via query strings (por exemplo, filtro por nome dos produtos).
+- [ ] Tratar e sanitizar a entrada e saída dos dados.
+- [ ] Testar, de forma automatizada, o funcionamento do código;
+- [ ] Criar um script/container para sua execução, facilitando a utilização local.
+- [ ] Criar comandos para facilitar o desenvolvimento e a utilização do serviço local.
+- [ ] Build automatizado do repositório usando alguma ferramenta de Continuous Integration.
+- [ ] Garantir seus padrões e estilo de código de forma automatizada.
 
 ### 📋 Pré-requisitos
 
@@ -56,7 +60,7 @@ Explique que eles verificam esses testes e porquê.
 Dar exemplos
 ```
 
-### ⌨️ E testes de estilo de codificação
+### ⌨️ Testes de estilo de codificação
 
 Explique que eles verificam esses testes e porquê.
 
